@@ -5,7 +5,7 @@ This is the Goods service with fqdn go.micro.srv.v1.goods.
 ## Getting Started
 ### Prerequisites
 
-> Micro
+> [Micro](https://github.com/micro/micro)
 
 ## Install Micro
 
@@ -22,7 +22,7 @@ docker pull udian/micro
 
 > Etcd (服务发现，配置中心)
 
-> Nsq （消息队列，可以替换成kafka）
+> [Nsq](http://wiki.jikexueyuan.com/project/nsq-guide/) （消息队列，可以替换成kafka）
 
 
 ###Run Etcd
