@@ -4,6 +4,22 @@ This is the Goods service with fqdn go.micro.srv.v1.goods.
 
 ## Getting Started
 ### Prerequisites
+
+> Micro
+
+## Install Micro
+
+```shell
+go get -u github.com/micro/micro
+```
+
+Or via Docker
+
+```shell
+docker pull udian/micro
+```
+
+
 > Etcd (服务发现，配置中心)
 
 > Nsq （消息队列，可以替换成kafka）
@@ -62,3 +78,24 @@ run in docker
 ```
 docker run --link etcd --link nsqd -p 50051:50051 --name=goods -e MICRO_SERVER_ADDRESS=:50051 -e MICRO_REGISTRY=etcd -e MICRO_REGISTRY_ADDRESS=http://etcd:2379 -e MICRO_BROKER=nsq -e MICRO_BROKER_ADDRESS=nsqd:4150  udian/goods
 ```
+
+### Run the micro api
+
+启动api服务，并转发到rpc服务
+```
+
+micro --registry=etcd  api --handler=rpc
+
+```
+Or via Docker
+
+```shell
+docker run --link=etcd -p 8080:8080 -e MICRO_REGISTRY=etcd -e MICRO_REGISTRY_ADDRESS=http://etcd:2379 ttouch/micro api --handle=rpc
+```
+
+api调用
+```
+curl -H 'Content-Type: application/json' -d '{"name": "John2","barcoe":"2222"}' http://127.0.0.1:8080/v1/goods/detail
+
+```
+
