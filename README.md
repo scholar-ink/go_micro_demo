@@ -25,7 +25,7 @@ docker pull udian/micro
 > [Nsq](http://wiki.jikexueyuan.com/project/nsq-guide/) （消息队列，可以替换成kafka）
 
 
-###Run Etcd
+### Run Etcd
 ```
 $ docker pull quay.io/coreos/etcd //下载etcd docker镜像
   //docker 启动etcd
